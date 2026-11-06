@@ -1,0 +1,232 @@
+/* Remove default spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: black;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- TOP BAR ---------- */
+.header {
+  position: relative;
+  z-index: 10; /* keeps the dropdown on top of the GIF */
+}
+
+.navbar {
+  background-color: #d0fbfb;
+  border-bottom: 2px solid black;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* left | middle | right */
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.menu-button {
+  justify-self: start;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown {
+  display: none; /* hidden until Menu is clicked */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #d0fbfb;
+  border-bottom: 2px solid black;
+  padding: 40px;
+  justify-content: center;
+  flex-wrap: wrap; /* moves items to a new line if there's no room */
+  gap: 60px;
+}
+
+.dropdown.open {
+  display: flex; /* shows the panel */
+}
+
+.dropdown-item {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  gap: 10px;
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.dropdown-item img {
+  width: 90px;  /* size of the little GIFs */
+  height: 90px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+/* Little GIF grows a bit when you hover over it */
+.dropdown-item:hover img {
+  transform: scale(1.15);
+}
+
+.dropdown-item:hover span {
+  text-decoration: underline;
+}
+
+.main img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ---------- DRINKS PAGE ---------- */
+
+/* Polka dot background */
+.drinks-page {
+  background-image: url("images/polka-dot.jpg");
+  background-size: cover;
+  background-attachment: fixed; /* background stays still when you scroll */
+}
+
+.drinks {
+  flex: 1;
+  padding: 60px 40px;
+}
+
+.drinks-title {
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 60px;
+}
+
+/* Puts the drinks side by side, centered */
+.drinks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 drinks per row */
+  gap: 70px;
+  justify-items: center;
+}
+
+.drink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.drink img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+
+  /* Glowing outline */
+  filter: drop-shadow(0 0 6px white)
+          drop-shadow(0 0 14px white);
+
+  /* Bouncing */
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.drink p {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Each drink starts bouncing at a slightly different time,
+   so they don't all move together */
+.drink:nth-child(2) img { animation-delay: 0.3s; }
+.drink:nth-child(3) img { animation-delay: 0.6s; }
+.drink:nth-child(4) img { animation-delay: 0.9s; }
+.drink:nth-child(5) img { animation-delay: 1.2s; }
+.drink:nth-child(6) img { animation-delay: 1.5s; }
+.drink:nth-child(7) img { animation-delay: 1.8s; }
+.drink:nth-child(8) img { animation-delay: 2.1s; }
+
+/* The up and down movement */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }      /* normal position */
+  50%      { transform: translateY(-20px); }  /* moves up 20px */
+}
+/* Moving GIF background for the navbar, drinks page only */
+.drinks-page .navbar {
+  background-image: url("images/greentea.gif");
+  background-size: cover;      /* fills the whole navbar */
+  background-position: center; /* shows the middle of the GIF */
+}
+/* Sound button on the right side of the navbar */
+.sound-button {
+  justify-self: end;
+}
+/* ---------- BREAKFAST PAGE ---------- */
+.breakfast-page {
+  background-color: #fff3d6; /* light cream, change to any color */
+}
+
+.breakfast-page .navbar {
+  background-image: url("images/pancakes.gif");
+  background-size: cover;
+  background-position: center;
+}
+/* Breakfast: center the 2 plates */
+.breakfast-page .drinks-grid {
+  display: flex;
+  justify-content: center; /* puts them in the middle */
+  gap: 120px;              /* space between the 2 plates */
+}
+
+/* Breakfast: slow spinning instead of bouncing */
+.breakfast-page .drink img {
+  animation: spin 15s linear infinite;
+  animation-delay: 0s;
+  width: 500px;
+  height: 500px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.breakfast-page {
+  background-image: url("images/Green\ dot.jpeg");
+  background-size: cover;
+  background-attachment: fixed; /* background stays still when you scroll */
+}
+/* ---------- FOOD DIARY PAGE: full-width navbar on top of the zine ---------- */
+.diary-page .header {
+  position: fixed;  /* sticks to the top of the screen */
+  top: 0;
+  left: 0;
+  width: 100%;      /* stretches across the whole page */
+  z-index: 100;     /* stays on top of the zine and Cooking Mama */
+}
+/* Navbar background image, food diary page only */
+.diary-page .navbar {
+  background-image: url("images/ramen-navbar.gif");
+  background-size: cover;
+  background-position: center;
+}
+/* Food diary: center the book in the space under the navbar */
+.diary-page {
+  padding-top: 100px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="breakfast-page">
+
+  <!-- TOP BAR + DROPDOWN -->
+  <header class="header">
+
+    <nav class="navbar">
+      <button class="menu-button" id="menuButton">Menu</button>
+      <a href="index.html" class="logo">breakfast</a>
+      <div></div>
+    </nav>
+
+  <div class="dropdown" id="dropdown">
+
+      <a href="food-diary.html" class="dropdown-item">
+        <img src="images/diary.gif" alt="">
+        <span>Food Diary</span>
+      </a>
+
+      <a href="breakfast.html" class="dropdown-item">
+        <img src="images/breakfast.gif" alt="">
+        <span>Breakfast</span>
+      </a>
+
+      <a href="drinks.html" class="dropdown-item">
+        <img src="images/drinks.gif" alt="">
+        <span>Drinks</span>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- BREAKFAST -->
+  <main class="drinks">
+    <h1 class="drinks-title"></h1>
+  <!-- Background music -->
+  <audio id="breakfastMusic" src="sounds/glow.mp3" loop></audio>
+
+    <div class="drinks-grid">
+
+      <div class="drink">
+        <img src="images/yogurtbowl3.png" alt="">
+        <p></p>
+      </div>
+
+      <div class="drink">
+        <img src="images/yogurtbowl4.png" alt="">
+        <p></p>
+      </div>
+
+    </div>
+      <script>
+    // Makes the Menu button open and close the panel
+    const menuButton = document.getElementById("menuButton");
+    const dropdown = document.getElementById("dropdown");
+
+    menuButton.addEventListener("click", function () {
+      dropdown.classList.toggle("open");
+    });
+
+    // Breakfast music: try to play right away,
+    // or start on the first click if the browser blocks it
+    const breakfastMusic = document.getElementById("breakfastMusic");
+    breakfastMusic.volume = 0.4; // 0 = silent, 1 = full volume
+
+    breakfastMusic.play().catch(function () {
+      document.addEventListener("click", function () {
+        breakfastMusic.play();
+      }, { once: true });
+    });
+  </script>

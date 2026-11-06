@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOP BAR + DROPDOWN -->
+  <header class="header">
+
+    <nav class="navbar">
+      <button class="menu-button" id="menuButton">Menu</button>
+      <a href="index.html" class="logo">fooOOOOoood</a>
+      <button class="menu-button sound-button" id="soundButton">Sound: Off</button>
+    </nav>
+
+        <!-- The panel that appears when you click Menu -->
+    <div class="dropdown" id="dropdown">
+
+      <a href="food-diary.html" class="dropdown-item">
+        <img src="images/diary.gif" alt="">
+        <span>Food Diary</span>
+      </a>
+
+      <a href="breakfast.html" class="dropdown-item">
+        <img src="images/breakfast.gif" alt="">
+        <span>Breakfast</span>
+      </a>
+
+      <a href="drinks.html" class="dropdown-item">
+        <img src="images/drinks.gif" alt="">
+        <span>Drinks</span>
+      </a>
+
+      </div>
+    </div>
+
+  </header>
+
+  <!-- GIF -->
+  <main class="main">
+    <img src="images/calcifer.gif" alt="calcifer">
+  </main>
+    <!-- Background sound -->
+  <audio id="bgSound" src="sounds/sizzle.mp3" loop></audio>
+
+  <!-- Makes the Menu button open and close the panel -->
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const dropdown = document.getElementById("dropdown");
+
+    menuButton.addEventListener("click", function () {
+      dropdown.classList.toggle("open");
+    });
+        // Sound button: click to turn the sound on or off
+    const sound = document.getElementById("bgSound");
+    const soundButton = document.getElementById("soundButton");
+
+    sound.volume = 0.5; // 0 = silent, 1 = full volume
+
+    soundButton.addEventListener("click", function () {
+      if (sound.paused) {
+        sound.play();
+        soundButton.textContent = "Sound: On";
+      } else {
+        sound.pause();
+        soundButton.textContent = "Sound: Off";
+      }
+    });
+  </script>
+
+</body>
+</html>

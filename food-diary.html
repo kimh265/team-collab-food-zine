@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evelyn's Comfort Food</title> <!-- your website's styles (navbar, Menu) -->
+ <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="main/diary.css">
+</head>
+<body class="diary-page">
+
+  <!-- TOP BAR + DROPDOWN -->
+  <header class="header">
+
+    <nav class="navbar">
+      <button class="menu-button" id="menuButton">Menu</button>
+      <a href="index.html" class="logo">evelyn's food diary</a>
+      <div></div>
+    </nav>
+
+<div class="dropdown" id="dropdown">
+
+      <a href="food-diary.html" class="dropdown-item">
+        <img src="images/diary.gif" alt="">
+        <span>Food Diary</span>
+      </a>
+
+      <a href="breakfast.html" class="dropdown-item">
+        <img src="images/breakfast.gif" alt="">
+        <span>Breakfast</span>
+      </a>
+
+      <a href="drinks.html" class="dropdown-item">
+        <img src="images/drinks.gif" alt="">
+        <span>Drinks</span>
+      </a>
+
+  </header>
+
+  <!-- THE ZINE -->
+  <main class="zine">
+    <div class="book" id="book" tabindex="0" aria-label="Click right to go forward and left to go back">
+      <div id="scene" class="scene"></div>
+      <div id="turn" class="turn" aria-hidden="true">
+        <div id="front" class="sheet front"></div>
+        <div id="back" class="sheet back"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Decorations (moved inside the body) -->
+<img src="main/mama1.png" class="mama mama-left" alt="Cooking Mama">
+<img src="main/mama2.png" class="mama mama-right" alt="Cooking Mama">
+<img src="main/stars.png" class="stars" alt="Decorative stars">
+
+  <!-- Music -->
+  <audio id="bgMusic" loop>
+   <source src="main/hitslab-jazz-restaurant-cafe-626446.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Makes the Menu button open and close the panel -->
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const dropdown = document.getElementById("dropdown");
+
+    menuButton.addEventListener("click", function () {
+      dropdown.classList.toggle("open");
+    });
+  </script>
+
+  <!-- The zine's page-flipping code -->
+  <script src="main/diary.js"></script>
+
+</body>
+</html>

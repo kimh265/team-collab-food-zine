@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drinks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="drinks-page">
+
+  <!-- TOP BAR + DROPDOWN -->
+  <header class="header">
+
+    <nav class="navbar">
+      <button class="menu-button" id="menuButton">Menu</button>
+      <a href="index.html" class="logo">drinks</a>
+      <div></div>
+    </nav>
+
+<div class="dropdown" id="dropdown">
+
+      <a href="food-diary.html" class="dropdown-item">
+        <img src="images/diary.gif" alt="">
+        <span>Food Diary</span>
+      </a>
+
+      <a href="breakfast.html" class="dropdown-item">
+        <img src="images/breakfast.gif" alt="">
+        <span>Breakfast</span>
+      </a>
+
+      <a href="drinks.html" class="dropdown-item">
+        <img src="images/drinks.gif" alt="">
+        <span>Drinks</span>
+      </a>
+      
+  </header>
+
+  <!-- DRINKS -->
+  <main class="drinks">
+    <h1 class="drinks-title"></h1>
+
+    <div class="drinks-grid">
+
+      <div class="drink">
+        <img src="images/coffee.png" alt="">
+        <p>iced latte</p>
+      </div>
+
+      <div class="drink">
+        <img src="images/cherrymatcha.png" alt="">
+        <p>cherry matcha</p>
+      </div>
+
+      <div class="drink">
+        <img src="images/psl.png" alt="">
+        <p>pumpkin spice latte</p>
+      </div>
+
+      <div class="drink">
+        <img src="images/coconutmatcha.png" alt="">
+        <p>coconut water matcha</p>
+      </div>
+
+     <div class="drink">
+        <img src="images/coldbrew.png" alt="">
+        <p>cold brew</p>
+      </div>
+
+      <div class="drink">
+        <img src="images/regularmatcha.png" alt="">
+        <p>iced matcha latte</p>
+      </div>
+
+      <div class="drink">
+        <img src="images/icedcortado.png" alt="">
+        <p>iced cortado</p>
+      </div>
+
+      <div class="drink">
+        <img src="images/rosematcha.png" alt="">
+        <p>rose foam matcha</p>
+      </div>
+
+    </div>
+  </main>
+    <!-- Background bubbling sound -->
+  <audio id="drinksSound" src="sounds/bubbles.mp3" loop></audio>
+
+  <!-- Makes the Menu button open and close the panel -->
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const dropdown = document.getElementById("dropdown");
+
+    menuButton.addEventListener("click", function () {
+      dropdown.classList.toggle("open");
+    });
+        // Bubbling sound: try to play right away,
+    // or start on the first click if the browser blocks it
+    const drinksSound = document.getElementById("drinksSound");
+    drinksSound.volume = 0.4; // 0 = silent, 1 = full volume
+
+    drinksSound.play().catch(function () {
+      document.addEventListener("click", function () {
+        drinksSound.play();
+      }, { once: true });
+    });
+  </script>
+
+</body>
+</html>
